@@ -1,9 +1,17 @@
+using System;
 using UnityEditor.Rendering;
 using UnityEngine;
 
 public class InputManager : Singleton<InputManager>
 {
     private PlayerInputSystem _inputActions;
+
+    public event Action OnInputUp;
+    public event Action OnInputDown;
+    public event Action OnInputLeft;
+    public event Action OnInputRight;
+
+    public event Action OnConfirmed;
 
     protected override void Awake()
     {
@@ -42,25 +50,30 @@ public class InputManager : Singleton<InputManager>
     private void OnUpPressed()
     {
         Debug.Log("Up pressed / Joystick up");
+        OnInputUp?.Invoke();
     }
 
     private void OnDownPressed()
     {
         Debug.Log("Down pressed / Joystick down");
+        OnInputDown?.Invoke();
     }
 
     private void OnLeftPressed()
     {
         Debug.Log("Left pressed / Joystick left");
+        OnInputLeft?.Invoke();
     }
 
     private void OnRightPressed()
     {
         Debug.Log("Right pressed / Joystick right");
+        OnInputRight?.Invoke();
     }
 
     private void OnConfirmPressed()
     {
         Debug.Log("Confirm pressed");
+        OnConfirmed?.Invoke();
     }
 }
