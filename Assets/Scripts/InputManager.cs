@@ -1,6 +1,4 @@
 using System;
-using UnityEditor.Rendering;
-using UnityEngine;
 
 public class InputManager : Singleton<InputManager>
 {
@@ -49,31 +47,26 @@ public class InputManager : Singleton<InputManager>
 
     private void OnUpPressed()
     {
-        Debug.Log("Up pressed / Joystick up");
         OnInputUp?.Invoke();
     }
 
     private void OnDownPressed()
     {
-        Debug.Log("Down pressed / Joystick down");
         OnInputDown?.Invoke();
     }
 
     private void OnLeftPressed()
     {
-        Debug.Log("Left pressed / Joystick left");
         OnInputLeft?.Invoke();
     }
 
     private void OnRightPressed()
     {
-        Debug.Log("Right pressed / Joystick right");
         OnInputRight?.Invoke();
     }
 
     private void OnConfirmPressed()
     {
-        Debug.Log("Confirm pressed");
         OnConfirmed?.Invoke();
     }
 }

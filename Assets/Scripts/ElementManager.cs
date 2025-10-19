@@ -14,10 +14,7 @@ public class ElementManager : MonoBehaviour
     private float _defaultOpacity = 0.35f;
     private float _selectedElementOpacity = 1f;
 
-    private System.Action _onUp;
-    private System.Action _onRight;
-    private System.Action _onDown;
-    private System.Action _onLeft;
+    private System.Action _onUp, _onRight, _onDown, _onLeft;
 
     private void Start()
     {
@@ -70,13 +67,12 @@ public class ElementManager : MonoBehaviour
 
     private void ConfirmedElement()
     {
-        if (_activeElement == null)
-        {
-            Debug.LogWarning("No element selected to confirm!");
-            return;
-        }
+        if (_activeElement == null) return;
 
         Debug.Log($"Confirmed element: {_activeElement.name}");
+        ReactionManager.Instance
+            .React(_activeElement, ElementGenerator.Instance.GetCurrentGeneratedElement());
+        ElementGenerator.Instance.ResetGenerator();
     }
 
     public void RegisterElement(ElementData element)

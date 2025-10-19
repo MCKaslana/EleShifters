@@ -9,4 +9,7 @@ public class ElementData : ScriptableObject
     [Header("Relationships")]
     public ElementData strongAgainst;
     public ElementData weakAgainst;
+
+    [Header("Visuals")]
+    public GameObject elementPrefab;
 }

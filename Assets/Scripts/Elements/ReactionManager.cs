@@ -1,14 +1,18 @@
+using System;
 using UnityEngine;
 
-public class ReactionManager : MonoBehaviour
+public class ReactionManager : Singleton<ReactionManager>
 {
-    public void React(ElementData a, ElementData b)
+    public void React(ElementData playerElement, ElementData opponentElement)
     {
-        if (a.strongAgainst == b)
-            Debug.Log($"{a.elementType} beats {b.elementType}");
-        else if (a.weakAgainst == b)
-            Debug.Log($"{a.elementType} is beaten by {b.elementType}");
+        if (playerElement.strongAgainst == opponentElement)
+        {
+            Debug.Log($"{playerElement.elementType} beats {opponentElement.elementType}");
+            //Update by adding score
+        }
+        else if (playerElement.weakAgainst == opponentElement)
+            Debug.Log($"{playerElement.elementType} is beaten by {opponentElement.elementType}");
         else
-            Debug.Log($"{a.elementType} and {b.elementType} are neutral.");
+            Debug.Log($"{playerElement.elementType} and {opponentElement.elementType} are neutral.");
     }
 }
