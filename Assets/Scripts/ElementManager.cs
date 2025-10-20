@@ -1,17 +1,18 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class ElementManager : MonoBehaviour
 {
     [Header("Element Inputs")]
     [SerializeField] private List<ElementData> _elementList = new();
-    [SerializeField] private List<SpriteRenderer> _elementSprites = new();
+    [SerializeField] private List<Image> _elementSprites = new();
     private int _maximumElementCount = 4;
 
     private ElementData _activeElement;
     private int _activeIndex = -1;
 
-    private float _defaultOpacity = 0.35f;
+    private float _defaultOpacity = 0.30f;
     private float _selectedElementOpacity = 1f;
 
     private System.Action _onUp, _onRight, _onDown, _onLeft;
@@ -29,8 +30,8 @@ public class ElementManager : MonoBehaviour
         InputManager.Instance.OnInputLeft += _onLeft;
         InputManager.Instance.OnConfirmed += ConfirmedElement;
 
-        foreach (var sprite in _elementSprites)
-            SetOpacity(sprite, _defaultOpacity);
+        foreach (var image in _elementSprites)
+            SetOpacity(image, _defaultOpacity);
     }
 
     private void OnDisable()
@@ -57,7 +58,7 @@ public class ElementManager : MonoBehaviour
         }
     }
 
-    private void SetOpacity(SpriteRenderer sprite, float opacity)
+    private void SetOpacity(Image sprite, float opacity)
     {
         if (sprite == null) return;
         Color c = sprite.color;
@@ -67,12 +68,17 @@ public class ElementManager : MonoBehaviour
 
     private void ConfirmedElement()
     {
-        if (_activeElement == null) return;
+        if (_activeElement == null)
+            return;
+
+        var opponent = ElementGenerator.Instance.GetCurrentGeneratedElement();
+        if (opponent == null)
+            return;
 
         Debug.Log($"Confirmed element: {_activeElement.name}");
-        ReactionManager.Instance
-            .React(_activeElement, ElementGenerator.Instance.GetCurrentGeneratedElement());
-        ElementGenerator.Instance.ResetGenerator();
+        ReactionManager.Instance.React(_activeElement, opponent);
+
+        ElementGenerator.Instance.ConfirmElement();
     }
 
     public void RegisterElement(ElementData element)

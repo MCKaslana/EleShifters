@@ -5,35 +5,93 @@ public class ElementGenerator : Singleton<ElementGenerator>
 {
     [Header("All Elements")]
     [SerializeField] private List<ElementData> _elements = new();
-    private ElementData _currentGeneratedElement;
-    private int _elementIndex;
 
-    private bool _hasGenerated = false;
-    private bool _hasInteracted = false;
+    [Header("Spawn Settings")]
+    [SerializeField] private Transform _spawnPoint;
+    [SerializeField] private float _confirmTimeLimit = 5f;
+
+    private ElementData _currentGeneratedElement;
+    private GameObject _spawnedObject;
+
+    private float _timer;
+    private bool _waitingForConfirm;
 
     private void Update()
     {
-        if (_hasGenerated)
+        if (!_waitingForConfirm)
         {
+            if (_currentGeneratedElement == null)
+                GenerateNewElement();
             return;
         }
-        else
+
+        _timer -= Time.deltaTime;
+        if (_timer <= 0f)
         {
-            _currentGeneratedElement = GetRandomElement();
-            _hasGenerated = true;
+            LoseLife();
+            ResetGenerator();
         }
     }
 
-    public void ResetGenerator() => _hasGenerated = false;
+    private void GenerateNewElement()
+    {
+        _currentGeneratedElement = GetRandomElement();
+
+        if (_currentGeneratedElement.elementPrefab != null && _spawnPoint != null)
+        {
+            _spawnedObject = Instantiate(
+                _currentGeneratedElement.elementPrefab,
+                _spawnPoint.position,
+                Quaternion.identity
+            );
+        }
+
+        Debug.Log($"Generated element: {_currentGeneratedElement.elementType}");
+
+        _timer = _confirmTimeLimit;
+        _waitingForConfirm = true;
+    }
+
+    public void ConfirmElement()
+    {
+        if (!_waitingForConfirm)
+            return;
+
+        Debug.Log("Player confirmed before timer expired.");
+
+        _waitingForConfirm = false;
+        _timer = 0f;
+
+        if (_spawnedObject != null)
+            Destroy(_spawnedObject);
+
+        _spawnedObject = null;
+        _currentGeneratedElement = null;
+    }
+
+    public void ResetGenerator()
+    {
+        _waitingForConfirm = false;
+        _timer = 0f;
+
+        if (_spawnedObject != null)
+            Destroy(_spawnedObject);
+
+        _spawnedObject = null;
+        _currentGeneratedElement = null;
+    }
 
     private ElementData GetRandomElement()
     {
-        _elementIndex = Random.Range(0, _elements.Count - 1);
-        return _elements[_elementIndex];
+        int index = Random.Range(0, _elements.Count);
+        return _elements[index];
     }
 
-    public ElementData GetCurrentGeneratedElement()
+    public ElementData GetCurrentGeneratedElement() => _currentGeneratedElement;
+
+    private void LoseLife()
     {
-        return _currentGeneratedElement;
+        Debug.Log("Player failed to confirm in time! Lost a life!");
+        GameManager.Instance.UpdatePlayerLives();
     }
 }

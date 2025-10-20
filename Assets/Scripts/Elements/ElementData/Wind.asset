@@ -15,3 +15,4 @@ MonoBehaviour:
   elementType: 3
   strongAgainst: {fileID: 11400000, guid: 3874eef69ffd1754eb8634d1b92ee53f, type: 2}
   weakAgainst: {fileID: 11400000, guid: 2dad8699b542cc440b118d60c47f22a0, type: 2}
+  elementPrefab: {fileID: 4971703630795229312, guid: 96a2d52aaa57a524bb4f554eef1c7c53, type: 3}

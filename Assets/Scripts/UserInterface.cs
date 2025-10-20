@@ -18,10 +18,19 @@ public class UserInterface : MonoBehaviour
 
     private void Start()
     {
-        //UpdateScore(0);
-        //UpdateCombo(0);
+        if (_scoreText == null || 
+            _timerText == null || 
+            _comboText == null || 
+            _livesCount == null)
+        {
+            Debug.LogError("UserInterface: One or more UI Text components are not assigned.");
+            return;
+        }
+
+        UpdateScore(0);
+        UpdateCombo(0);
         UpdateTimer("0");
-        //UpdateLives(0);
+        UpdateLives(0);
         _timerScript.EnableTImer();
     }
 
