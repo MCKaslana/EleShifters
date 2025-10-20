@@ -1079,7 +1079,7 @@ GameObject:
   - component: {fileID: 7053793134469207941}
   - component: {fileID: 4367592748213636230}
   m_Layer: 5
-  m_Name: ShrinkBarCenter (1)
+  m_Name: TimerHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
