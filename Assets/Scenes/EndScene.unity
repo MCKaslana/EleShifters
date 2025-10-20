@@ -131,6 +131,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnterYourScore
       objectReference: {fileID: 0}
+    - target: {fileID: 7427954547288965006, guid: 55edfa33f0e5a024da9fa28f8f506bf0, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427954547288965006, guid: 55edfa33f0e5a024da9fa28f8f506bf0, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 7427954547288965006, guid: 55edfa33f0e5a024da9fa28f8f506bf0, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 7560898523738701159, guid: 55edfa33f0e5a024da9fa28f8f506bf0, type: 3}
       propertyPath: m_Pivot.x
       value: 0
