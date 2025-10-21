@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class ElementManager : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class ElementManager : MonoBehaviour
         InputManager.Instance.OnInputDown += _onDown;
         InputManager.Instance.OnInputLeft += _onLeft;
         InputManager.Instance.OnConfirmed += ConfirmedElement;
+
+        ShuffleElements();
 
         foreach (var image in _elementSprites)
             SetOpacity(image, _defaultOpacity);
@@ -85,5 +88,41 @@ public class ElementManager : MonoBehaviour
     {
         if (_elementList.Contains(element) || _elementList.Count >= _maximumElementCount) return;
         _elementList.Add(element);
+    }
+
+    private void ShuffleElements()
+    {
+        for (int i = 0; i < _elementList.Count; i++)
+        {
+            int randomIndex = Random.Range(i, _elementList.Count);
+            (_elementList[i], _elementList[randomIndex]) = (_elementList[randomIndex], _elementList[i]);
+        }
+
+        UpdateElementVisuals();
+
+        for (int i = 0; i < _elementList.Count; i++)
+        {
+            Debug.Log($"Slot {i}: {_elementList[i].elementType}");
+        }
+    }
+
+    private void UpdateElementVisuals()
+    {
+        for (int i = 0; i < _elementSprites.Count; i++)
+        {
+            if (i >= _elementList.Count) break;
+
+            var element = _elementList[i];
+            var image = _elementSprites[i];
+
+            if (element == null || image == null) continue;
+
+            image.color = new Color(
+                element.elementColor.r,
+                element.elementColor.g,
+                element.elementColor.b,
+                _defaultOpacity
+            );
+        }
     }
 }

@@ -12,6 +12,7 @@ public class ElementGenerator : Singleton<ElementGenerator>
 
     private ElementData _currentGeneratedElement;
     private GameObject _spawnedObject;
+    [SerializeField] private GameObject _interfaceObject;
 
     private float _timer;
     private bool _waitingForConfirm;
@@ -44,6 +45,9 @@ public class ElementGenerator : Singleton<ElementGenerator>
                 _spawnPoint.position,
                 Quaternion.identity
             );
+
+            _spawnedObject.transform.parent = _interfaceObject.transform;
+            _spawnedObject.transform.position = _spawnPoint.position;
         }
 
         Debug.Log($"Generated element: {_currentGeneratedElement.elementType}");
@@ -91,7 +95,6 @@ public class ElementGenerator : Singleton<ElementGenerator>
 
     private void LoseLife()
     {
-        Debug.Log("Player failed to confirm in time! Lost a life!");
         GameManager.Instance.UpdatePlayerLives();
     }
 }

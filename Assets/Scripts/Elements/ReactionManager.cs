@@ -7,12 +7,13 @@ public class ReactionManager : Singleton<ReactionManager>
     {
         if (playerElement.strongAgainst == opponentElement)
         {
-            Debug.Log($"{playerElement.elementType} beats {opponentElement.elementType}");
-            //Update by adding score
+            GameManager.Instance.AddScore();
         }
         else if (playerElement.weakAgainst == opponentElement)
-            Debug.Log($"{playerElement.elementType} is beaten by {opponentElement.elementType}");
+        {
+            GameManager.Instance.UpdatePlayerLives();
+        }
         else
-            Debug.Log($"{playerElement.elementType} and {opponentElement.elementType} are neutral.");
+            GameManager.Instance.UpdatePlayerLives();
     }
 }
