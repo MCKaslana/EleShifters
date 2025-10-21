@@ -13,6 +13,9 @@ public class UserInterface : MonoBehaviour
     private void Awake()
     {
         _timerScript = GetComponent<TimerScript>();
+        GameManager.Instance.OnPlayerLoseLife += UpdateLives;
+        GameManager.Instance.OnPlayerGainScore += UpdateScore;
+        GameManager.Instance.OnPlayerGainCombo += UpdateCombo;
         _timerScript.OnTimeChanged += UpdateTimer;
     }
 
@@ -30,7 +33,7 @@ public class UserInterface : MonoBehaviour
         UpdateScore(0);
         UpdateCombo(0);
         UpdateTimer("0");
-        UpdateLives(0);
+        UpdateLives(3);
         _timerScript.EnableTImer();
     }
 
@@ -52,5 +55,6 @@ public class UserInterface : MonoBehaviour
     public void UpdateLives(int livesLeft)
     {
         _livesCount.text = $"< {livesLeft} >";
+        UpdateCombo(0);
     }
 }

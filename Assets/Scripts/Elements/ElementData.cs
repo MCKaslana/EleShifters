@@ -11,5 +11,6 @@ public class ElementData : ScriptableObject
     public ElementData weakAgainst;
 
     [Header("Visuals")]
+    public Color elementColor;
     public GameObject elementPrefab;
 }
