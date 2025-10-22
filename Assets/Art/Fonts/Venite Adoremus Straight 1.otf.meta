@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d644d757175fd58408f01d438e0d5b53
+guid: 2939236140b75434f9dae9d8c7391cf5
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Rocket Rinder
+  - Venite Adoremus Straight
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
