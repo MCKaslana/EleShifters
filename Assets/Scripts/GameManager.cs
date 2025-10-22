@@ -42,13 +42,14 @@ public class GameManager : Singleton<GameManager>
         };
 
         _playerScore += score;
+        GainCombo();
 
         OnPlayerGainScore?.Invoke(_playerScore);
     }
 
     public void UpdatePlayerLives()
     {
-        if (!_hasRecordedPerfectScore && _currentPlayerLives == _playerLives)
+        if (!_hasRecordedPerfectScore)
         {
             _playerPerfectScore = _playerScore;
             _hasRecordedPerfectScore = true;
