@@ -5,22 +5,30 @@ public class GameManager : Singleton<GameManager>
 {
     [Header("Game Settings")]
     [SerializeField] private int _playerLives = 3;
+    [SerializeField] private TimerScript _timer;
+
+    private float _elapsedTimeSurvived;
+    private int _playerScore = 0;
+    private int _playerPerfectScore = 0;
+    private int _playerCombo = 0;
+
+    public int GetPlayerScore() => _playerScore;
+    public int GetPerfectScore() => _playerPerfectScore;
+    public int GetPlayerCombo() => _playerCombo;
+    public float GetElapsedTimeSurvived() => _elapsedTimeSurvived;
 
     private int _currentPlayerLives;
-    private int _playerScore = 0;
-    private int _playerCombo = 0;
 
     public event Action<int> OnPlayerLoseLife;
     public event Action<int> OnPlayerGainScore;
     public event Action<int> OnPlayerGainCombo;
 
-    private bool _isGameRunning = false;
+    private bool _hasRecordedPerfectScore = false;
 
     protected override void Awake()
     {
         base.Awake();
         _currentPlayerLives = _playerLives;
-        _isGameRunning = true;
     }
 
     public void AddScore()
@@ -34,19 +42,27 @@ public class GameManager : Singleton<GameManager>
         };
 
         _playerScore += score;
+        GainCombo();
 
         OnPlayerGainScore?.Invoke(_playerScore);
     }
 
     public void UpdatePlayerLives()
     {
+        if (!_hasRecordedPerfectScore)
+        {
+            _playerPerfectScore = _playerScore;
+            _hasRecordedPerfectScore = true;
+        }
+
         _currentPlayerLives--;
         OnPlayerLoseLife?.Invoke(_currentPlayerLives);
         ResetCombo();
 
         if (_currentPlayerLives <= 0)
         {
-            _isGameRunning = false;
+            _elapsedTimeSurvived = _timer.GetElapsedTime();
+            PlayerDataManager.Instance.SaveFromGameManager();
             SceneTransitioner.Instance.TransitionToScene(3);
         }
     }

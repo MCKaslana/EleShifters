@@ -44,7 +44,7 @@ public class UserInterface : MonoBehaviour
 
     public void UpdateTimer(string timeElapsed)
     {
-        _timerText.text = $"< {_timerScript.GetTime()} >";
+        _timerText.text = $"< {_timerScript.GetFormattedTime()} >";
     }
 
     public void UpdateCombo(int combo)
