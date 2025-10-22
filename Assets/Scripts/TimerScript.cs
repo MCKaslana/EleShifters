@@ -21,13 +21,15 @@ public class TimerScript : MonoBehaviour
         OnTimeChanged?.Invoke(_timeElapsed.ToString());
     }
 
-    public string GetTime()
+    public string GetFormattedTime()
     {
         int minutes = Mathf.FloorToInt(_timeElapsed / 60f);
         int seconds = Mathf.FloorToInt(_timeElapsed % 60f);
         int milliseconds = Mathf.FloorToInt((_timeElapsed * 100f) % 100f);
         return $"{minutes:00}:{seconds:00}:{milliseconds:00}";
     }
+
+    public float GetElapsedTime() => _timeElapsed;
 
     public void EnableTImer() => _isRunning = true;
     public void DisableTImer() => _isRunning = false;
