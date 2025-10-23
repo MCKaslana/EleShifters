@@ -1,9 +1,18 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.Collections;
+using UnityEngine.UIElements;
 
 public class SceneTransitioner : MonoBehaviour
 {
     public static SceneTransitioner Instance;
+
+    [Header(" Fade Settings ")]
+    [SerializeField] private CanvasGroup fadeCanvasGroup;
+    [SerializeField] private float fadeDuration = 0.5f;
+
+    private bool isFading = false;
 
     private void Awake()
     {
@@ -15,32 +24,50 @@ public class SceneTransitioner : MonoBehaviour
         else if (Instance != this)
         {
             Destroy(gameObject);
-            return;
         }
     }
 
-    public void TransitionToScene(int sceneIndex)
+    public void TransitionToScene(int sceneIndex) => StartCoroutine(DoSceneTransition(sceneIndex));
+    public void TransitionToSceneByName(string sceneName) => StartCoroutine(DoSceneTransition(sceneName));
+    public void TransitionToLeaderBoard() => StartCoroutine(DoSceneTransition("Leaderboard"));
+    public void TransitionToMainMenu() => StartCoroutine(DoSceneTransition("MainMenu"));
+    public void QuitGame() => Application.Quit();
+
+
+    private IEnumerator DoSceneTransition(int sceneIndex)
     {
-        SceneManager.LoadScene(sceneIndex);
+        yield return Fade(1f);
+        yield return SceneManager.LoadSceneAsync(sceneIndex);
+        yield return Fade(0f);
     }
 
-    public void TransitionToSceneByName(string sceneName)
+    private IEnumerator DoSceneTransition(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        yield return Fade(1f);
+        yield return SceneManager.LoadSceneAsync(sceneName);
+        yield return Fade(0f);
     }
 
-    public void TransitionToLeaderBoard()
+    private IEnumerator Fade(float targetAlpha)
     {
-        SceneManager.LoadScene("Leaderboard");
-    }
+        if (isFading) yield break;
 
-    public void TransitionToMainMenu()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
+        isFading = true;
+        float startAlpha = fadeCanvasGroup.alpha;
+        float timer = 0f;
 
-    public void QuitGame()
-    {
-        Application.Quit();
+        fadeCanvasGroup.blocksRaycasts = true;
+
+        while (timer < fadeDuration)
+        {
+            timer += Time.deltaTime;
+            fadeCanvasGroup.alpha = Mathf.Lerp(startAlpha, targetAlpha, timer / fadeDuration);
+            yield return null;
+        }
+
+        fadeCanvasGroup.alpha = targetAlpha;
+        isFading = false;
+
+        fadeCanvasGroup.blocksRaycasts = targetAlpha > 0.01f;
     }
 }
