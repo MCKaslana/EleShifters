@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ReactionManager : Singleton<ReactionManager>
 {
+    protected override bool PersistBetweenScenes => false;
+
     public void React(ElementData playerElement, ElementData opponentElement)
     {
         if (playerElement.strongAgainst == opponentElement)

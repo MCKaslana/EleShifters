@@ -8,12 +8,6 @@ public class PlayerDataManager : Singleton<PlayerDataManager>
     public int PlayerCombo { get; private set; }
     public float TimeSurvived { get; private set; }
 
-    protected override void Awake()
-    {
-        base.Awake();
-        DontDestroyOnLoad(gameObject);
-    }
-
     public void SaveFromGameManager()
     {
         var gm = GameManager.Instance;

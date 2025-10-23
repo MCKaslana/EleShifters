@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class ElementGenerator : Singleton<ElementGenerator>
 {
+    protected override bool PersistBetweenScenes => false;
+
     [Header("All Elements")]
     [SerializeField] private List<ElementData> _elements = new();
 
