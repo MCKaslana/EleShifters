@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    protected override bool PersistBetweenScenes => false;
+
     [Header("Game Settings")]
     [SerializeField] private int _playerLives = 3;
     [SerializeField] private TimerScript _timer;
+    [SerializeField] private int _endSceneIndex;
 
     private float _elapsedTimeSurvived;
     private int _playerScore = 0;
@@ -63,7 +66,7 @@ public class GameManager : Singleton<GameManager>
         {
             _elapsedTimeSurvived = _timer.GetElapsedTime();
             PlayerDataManager.Instance.SaveFromGameManager();
-            SceneTransitioner.Instance.TransitionToScene(3);
+            SceneTransitioner.Instance.TransitionToScene(_endSceneIndex);
         }
     }
 

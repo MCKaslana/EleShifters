@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using Unity.VisualScripting;
 
 public class ElementManager : MonoBehaviour
 {
@@ -39,10 +38,10 @@ public class ElementManager : MonoBehaviour
 
     private void OnDisable()
     {
-        InputManager.Instance.OnInputUp -= () => SelectElementByIndex(0);
-        InputManager.Instance.OnInputRight -= () => SelectElementByIndex(1);
-        InputManager.Instance.OnInputDown -= () => SelectElementByIndex(2);
-        InputManager.Instance.OnInputLeft -= () => SelectElementByIndex(3);
+        InputManager.Instance.OnInputUp -= _onUp;
+        InputManager.Instance.OnInputRight -= _onRight;
+        InputManager.Instance.OnInputDown -= _onDown;
+        InputManager.Instance.OnInputLeft -= _onLeft;
         InputManager.Instance.OnConfirmed -= ConfirmedElement;
     }
 

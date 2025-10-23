@@ -51,7 +51,7 @@ public class Leaderboard : MonoBehaviour
         foreach (var entry in _leaderboardData.entries)
         {
             _leaderboardText.text +=
-                $"{rank}. {entry.PlayerName} - {entry.Score} pts ({entry.TimeSurvived:F1}s)\n";
+                $"{rank}. {entry.PlayerName}   -   {entry.Score} pts   -   ({entry.TimeSurvived:F1}s)\n";
             rank++;
         }
     }
