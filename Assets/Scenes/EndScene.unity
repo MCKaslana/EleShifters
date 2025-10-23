@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 84968325}
   - component: {fileID: 84968324}
   m_Layer: 5
-  m_Name: TEMP_ToLeaderBoard
+  m_Name: ToLeaderboardButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
