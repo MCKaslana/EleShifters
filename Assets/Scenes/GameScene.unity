@@ -1681,6 +1681,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerLives: 3
   _timer: {fileID: 1644178912}
+  _endSceneIndex: 2
 --- !u!1001 &1831434590
 PrefabInstance:
   m_ObjectHideFlags: 0

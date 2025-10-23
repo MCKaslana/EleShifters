@@ -9,10 +9,6 @@ public class ReactionManager : Singleton<ReactionManager>
         {
             GameManager.Instance.AddScore();
         }
-        else if (playerElement.weakAgainst == opponentElement)
-        {
-            GameManager.Instance.UpdatePlayerLives();
-        }
         else
             GameManager.Instance.UpdatePlayerLives();
     }

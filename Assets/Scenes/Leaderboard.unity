@@ -4375,50 +4375,6 @@ Transform:
   - {fileID: 933066567}
   m_Father: {fileID: 203687470}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &775807993
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 775807995}
-  - component: {fileID: 775807994}
-  m_Layer: 0
-  m_Name: SceneTransitioner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &775807994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775807993}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6664de3e037ac94ba93c3cf1582cbd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &775807995
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 775807993}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 938.37476, y: 207.18674, z: 3.6474159}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &803922385
 GameObject:
   m_ObjectHideFlags: 0
@@ -7171,8 +7127,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8181,6 +8137,7 @@ GameObject:
   - component: {fileID: 1325443987}
   - component: {fileID: 1325443986}
   - component: {fileID: 1325443985}
+  - component: {fileID: 1325443988}
   m_Layer: 5
   m_Name: ToLeaderboardButton
   m_TagString: Untagged
@@ -8252,10 +8209,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 775807994}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneTransitioner, Assembly-CSharp
-        m_MethodName: TransitionToScene
-        m_Mode: 3
+        m_MethodName: TransitionToMainMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8302,6 +8259,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325443983}
   m_CullTransparentMesh: 1
+--- !u!114 &1325443988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325443983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d80b84e392c14dc498226674f365bfb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionType: 2
+  sceneIndex: 0
+  sceneName: 
 --- !u!1 &1336875141
 GameObject:
   m_ObjectHideFlags: 0
@@ -12555,4 +12527,3 @@ SceneRoots:
   m_Roots:
   - {fileID: 1568112836}
   - {fileID: 2112928043}
-  - {fileID: 775807995}

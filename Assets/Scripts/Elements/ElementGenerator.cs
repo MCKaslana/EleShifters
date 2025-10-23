@@ -61,8 +61,6 @@ public class ElementGenerator : Singleton<ElementGenerator>
         if (!_waitingForConfirm)
             return;
 
-        Debug.Log("Player confirmed before timer expired.");
-
         _waitingForConfirm = false;
         _timer = 0f;
 
