@@ -1828,6 +1828,14 @@ PrefabInstance:
       propertyPath: _confirmTimeLimit
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4374391077267222495, guid: 897788415d1adb243b808c96d2d08f70, type: 3}
+      propertyPath: _confirmTimeLimitModifier
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374391077267222495, guid: 897788415d1adb243b808c96d2d08f70, type: 3}
+      propertyPath: _enableExponentialDifficulty
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5703926411715930907, guid: 897788415d1adb243b808c96d2d08f70, type: 3}
       propertyPath: _wrongSound
       value: 

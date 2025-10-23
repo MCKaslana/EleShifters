@@ -2,6 +2,8 @@ using System;
 
 public class InputManager : Singleton<InputManager>
 {
+    protected override bool PersistBetweenScenes => false;
+
     private PlayerInputSystem _inputActions;
 
     public event Action OnInputUp;

@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    protected override bool PersistBetweenScenes => false;
+
     [Header("Game Settings")]
     [SerializeField] private int _playerLives = 3;
     [SerializeField] private TimerScript _timer;
