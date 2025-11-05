@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5583756122703561129
+--- !u!1001 &6036347743467405696
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3792005476917107830, guid: 8413ce314aa80764989170c729a69278, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -268.40186
+      value: -1389
       objectReference: {fileID: 0}
     - target: {fileID: 3792005476917107830, guid: 8413ce314aa80764989170c729a69278, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 130.65845
+      value: 52.425903
       objectReference: {fileID: 0}
     - target: {fileID: 3792005476917107830, guid: 8413ce314aa80764989170c729a69278, type: 3}
       propertyPath: m_LocalPosition.z
@@ -51,15 +51,15 @@ PrefabInstance:
     - target: {fileID: 4751270606467163923, guid: 8413ce314aa80764989170c729a69278, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 517c7c09d7bc2c74990abe73669ee3cd, type: 3}
+      objectReference: {fileID: 21300000, guid: df0bf650e86ee274698bc85a236b3c1f, type: 3}
     - target: {fileID: 4766742747979335832, guid: 8413ce314aa80764989170c729a69278, type: 3}
       propertyPath: m_Name
-      value: Earth
+      value: Ice
       objectReference: {fileID: 0}
     - target: {fileID: 8816767189778279372, guid: 8413ce314aa80764989170c729a69278, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 517c7c09d7bc2c74990abe73669ee3cd, type: 3}
+      objectReference: {fileID: 21300000, guid: f2b10a8e446104b459fdfe7714268f75, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
