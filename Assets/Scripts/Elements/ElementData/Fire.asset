@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fire
   m_EditorClassIdentifier: 
   elementType: 0
-  strongAgainst: {fileID: 11400000, guid: e283b8c68c23bee48b4c9dd751b0115c, type: 2}
+  strongAgainst: {fileID: 11400000, guid: 3874eef69ffd1754eb8634d1b92ee53f, type: 2}
   weakAgainst: {fileID: 11400000, guid: 3ef97992b9c610041ad6b816ab4d708e, type: 2}
   elementColor: {r: 0.9960785, g: 0, b: 0, a: 0}
   selectorSprite: {fileID: 21300000, guid: ff225b8b01300c048ae10ba1bc86d812, type: 3}
