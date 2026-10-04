@@ -116,12 +116,7 @@ public class ElementManager : MonoBehaviour
 
             if (element == null || image == null) continue;
 
-            image.color = new Color(
-                element.elementColor.r,
-                element.elementColor.g,
-                element.elementColor.b,
-                _defaultOpacity
-            );
+            image.sprite = element.selectorSprite;
         }
     }
 }

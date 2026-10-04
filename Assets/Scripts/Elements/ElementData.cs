@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "ElementData", menuName = "Element System/ElementData")]
 public class ElementData : ScriptableObject
@@ -12,5 +13,6 @@ public class ElementData : ScriptableObject
 
     [Header("Visuals")]
     public Color elementColor;
+    public Sprite selectorSprite;
     public GameObject elementPrefab;
 }

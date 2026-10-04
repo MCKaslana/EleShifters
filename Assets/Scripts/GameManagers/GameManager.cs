@@ -15,9 +15,11 @@ public class GameManager : Singleton<GameManager>
     private int _playerPerfectScore = 0;
     private int _playerCombo = 0;
 
+    private int _highestCombo;
+
     public int GetPlayerScore() => _playerScore;
     public int GetPerfectScore() => _playerPerfectScore;
-    public int GetPlayerCombo() => _playerCombo;
+    public int GetPlayerCombo() => _highestCombo;
     public float GetElapsedTimeSurvived() => _elapsedTimeSurvived;
 
     private int _currentPlayerLives;
@@ -32,6 +34,7 @@ public class GameManager : Singleton<GameManager>
     {
         base.Awake();
         _currentPlayerLives = _playerLives;
+        _hasRecordedPerfectScore = false;
     }
 
     public void AddScore()
@@ -73,11 +76,17 @@ public class GameManager : Singleton<GameManager>
     public void GainCombo()
     {
         _playerCombo++;
+        _highestCombo++;
         OnPlayerGainCombo?.Invoke(_playerCombo);
     }
 
     private void ResetCombo()
     {
+        if (_playerCombo >= _highestCombo)
+        {
+            _highestCombo = _playerCombo;
+        }
+
         _playerCombo = 0;
         OnPlayerGainCombo?.Invoke(_playerCombo);
     }

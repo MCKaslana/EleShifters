@@ -32,11 +32,12 @@ public class Leaderboard : MonoBehaviour
         var data = PlayerDataManager.Instance;
         if (data == null) return;
 
-        string name = "P";
-        _leaderboardData.entries.Add(new LeaderboardEntry(name, data.PlayerScore, data.TimeSurvived));
+        string name = ">";
+        _leaderboardData.entries.Add(new LeaderboardEntry(name, data.PlayerPerfectScore, data.PlayerScore, data.TimeSurvived));
 
         _leaderboardData.entries = _leaderboardData.entries
-            .OrderByDescending(e => e.Score)
+            .OrderByDescending(e => e.PerfectScore)
+            .ThenByDescending(e => e.Score)
             .ThenByDescending(e => e.TimeSurvived)
             .Take(MaxEntries)
             .ToList();
@@ -51,7 +52,7 @@ public class Leaderboard : MonoBehaviour
         foreach (var entry in _leaderboardData.entries)
         {
             _leaderboardText.text +=
-                $"{rank}. {entry.PlayerName}   -   {entry.Score} pts   -   ({entry.TimeSurvived:F1}s)\n";
+                $"{rank}. {entry.PerfectScore} ps  -  {entry.Score} pts  -  ({entry.TimeSurvived:F1}s)\n";
             rank++;
         }
     }
